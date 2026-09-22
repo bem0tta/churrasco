@@ -27,7 +27,12 @@ if (isset($_GET['pesquisa'])) {
         }
     }
 }
-$res = $con->query($sql);
+try {
+    $res = $con->query($sql);
+} catch (mysqli_sql_exception $e) {
+    echo $e;
+}
+
 ?>
 
 <!DOCTYPE html>
