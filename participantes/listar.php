@@ -99,11 +99,13 @@ try {
             echo "<tr>";
 
             while ($user = $res->fetch_assoc()) {
-                foreach ($user as $dadoUser) {
-                    echo "<td>$dadoUser</td>";
+                foreach ($user as $chave =>$dadoUser) {
+                    if ($chave !== 'id') {
+                        echo "<td>$dadoUser</td>";
+                    }
                 }
-                echo "<td><a href='editar.php'>Editar</a>";
-                echo "<a href='excluir.php' class='excluir'>Excluir</a></td>";
+                echo "<td><a href='editar.php?id=$user->id'>Editar</a>";
+                echo "<a href='excluir.php?id=$user->id' class='excluir'>Excluir</a></td>";
             }
 
             echo "</tr>";
