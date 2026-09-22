@@ -104,8 +104,8 @@ try {
                         echo "<td>$dadoUser</td>";
                     }
                 }
-                echo "<td><a href='editar.php?id=$user->id'>Editar</a>";
-                echo "<a href='excluir.php?id=$user->id' class='excluir'>Excluir</a></td>";
+                echo "<td><a href='editar.php?id=". $user['id'] ."'>Editar</a>";
+                echo "<a href='excluir.php?id=". $user['id'] ."' class='excluir'>Excluir</a></td>";
             }
 
             echo "</tr>";
