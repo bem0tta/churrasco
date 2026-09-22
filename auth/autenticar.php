@@ -18,6 +18,7 @@
             $_SESSION['senha'] = $senha;
             header('location: index.php');
         } else{
+            session_destroy();
             header('location: login.php?res=falha');
         }
     }

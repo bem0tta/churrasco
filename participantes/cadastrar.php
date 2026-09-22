@@ -12,15 +12,15 @@
 <body>
     <form action="salvar.php" method="post">
         <label>Nome 
-            <input type="text">
+            <input type="text" name="nome">
         </label>
 
         <label>Turma 
-            <input type="text">
+            <input type="text" name="turma">
         </label>
 
         <label>Telefone 
-            <input type="text">
+            <input type="text" name="telefone">
         </label>
 
         <label>Tipo de churrasco
@@ -31,16 +31,16 @@
         </label>
 
         <label>Acompanhamento
-            <input type="text">
+            <input type="text" name="acompanhamento">
         </label>
 
         <p>Presença confirmada</p>
-        <label><input type="radio" value= "s" name="presenca"> Sim</label>
-        <label><input type="radio" value= "n" name="presenca"> nao</label>
+        <label><input type="radio" value="1" name="presenca"> Sim</label>
+        <label><input type="radio" value="0" name="presenca"> Não</label>
 
         <p>Pagamento realizado</p>
-        <label><input type="radio" value= "s" name="pagamento"> Sim</label>
-        <label><input type="radio" value= "n" name="pagamento"> nao</label>
+        <label><input type="radio" value= "1" name="pagamento"> Sim</label>
+        <label><input type="radio" value= "0" name="pagamento"> Não</label>
     </form>
 </body>
 </html>
