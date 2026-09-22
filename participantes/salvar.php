@@ -1,6 +1,6 @@
 <?php
-    require_once 'validar_login.php';
-    require_once 'conexao.php';
+    require_once '../includes/validar_login.php';
+    require_once '../config/conexao.php';
 
     $nome = $_POST['nome'];
     $turma = $_POST['turma'];
@@ -16,8 +16,10 @@
 
     try{
         $con->query($sql);
+        Seaslog::alert('Participante cadastrado!');
+        header('location: listar.php');
     } catch(mysqli_sql_exception $e){
-        alert('Não foi possível cadastrar');
+        Seaslog::alert('Não foi possível cadastrar!');
         header('location: cadastrar.php');
     }
 ?>

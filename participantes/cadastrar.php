@@ -1,5 +1,5 @@
 <?php
-    require_once('validar_login.php');
+    require_once '../includes/validar_login.php';
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +41,8 @@
         <p>Pagamento realizado</p>
         <label><input type="radio" value= "1" name="pagamento"> Sim</label>
         <label><input type="radio" value= "0" name="pagamento"> Não</label>
+
+        <button type="submit">ENVIAR</button>
     </form>
 </body>
 </html>
