@@ -4,25 +4,25 @@ require_once '../includes/verificar_login.php';
 $sql = 'SELECT nome, turma, tipo_churrasco as tipo, confirmado, pago from participantes';
 if (isset($_GET['pesquisa'])) {
     if (!empty($_GET['pesquisa']["nome"]) || !empty($_GET['pesquisa']["pagemento"]) || !empty($_GET['pesquisa']["presenca"])) {
-        $sql += " where ";
+        $sql = $sql . " where ";
 
         if (!empty($_GET['pesquisa']["nome"])) {
-            $sql += "nome like '%" . $_GET['pesquisa']["nome"] . "%' AND ";
+            $sql = $sql . "nome like '%" . $_GET['pesquisa']["nome"] . "%' AND ";
         }
         switch ($_GET['pesquisa']["pagamento"]) {
             case 'pagos':
-                $sql += 'pago = true AND';
+                $sql = $sql . 'pago = true AND';
                 break;
             case 'pendentes':
-                $sql += 'pago = false AND';
+                $sql = $sql . 'pago = false AND';
                 break;
         }
         switch ($_GET['pesquisa']["presenca"]) {
             case 'confirmados':
-                $sql += 'confirmado = true';
+                $sql = $sql . 'confirmado = true';
                 break;
             case 'naoConfirmados':
-                $sql += 'confirmado = false';
+                $sql = $sql . 'confirmado = false';
                 break;
         }
     }
@@ -86,8 +86,8 @@ try {
                 foreach ($user as $dadoUser) {
                     echo "<td>$dadoUser</td>";
                 }
-                echo "<a href='editar.php'>Editar</a>";
-                echo "<a href='excluir.php' class='excluir'>Excluir</a>";
+                echo "<td><a href='editar.php'>Editar</a>";
+                echo "<a href='excluir.php' class='excluir'>Excluir</a></td>";
             }
 
             echo "</tr>";
