@@ -4,8 +4,9 @@
     if(!isset($_GET['id'])){
         header('location: index.php');
     }
-    $sql = "select * from participantes where id = ".$_GET['id'].";";
-    $res = $con->query($sql);
+    $sql = "select * from participantes where id = ".$_GET['id'];
+    $resposta = $con->query($sql);
+    $res = mysqli_fetch_assoc($resposta);
 ?>
 
 <!DOCTYPE html>
@@ -18,35 +19,35 @@
 <body>
     <form action="atualizar.php?id=<?php echo $_GET['id']?>" method="post">
         <label>Nome 
-            <input type="text" name="nome" value = "<?php echo $res->nome?>">
+            <input type="text" name="nome" value = "<?php echo $res['nome']?>">
         </label>
 
         <label>Turma 
-            <input type="text" name="turma" value = "<?php echo $res->turma?>">
+            <input type="text" name="turma" value = "<?php echo $res['turma']?>">
         </label>
 
         <label>Telefone 
-            <input type="text" name="telefone" value = "<?php echo $res->telefone?>">
+            <input type="text" name="telefone" value = "<?php echo $res['telefone']?>">
         </label>
 
         <label>Tipo de churrasco
-            <select name="tipo" value = "<?php echo $res->tipo_churrasco?>">
-                <option value="t" >Tradicional</option>
-                <option value="v">Vegetariano</option>
+            <select name="tipo" value = "<?php echo $res['tipo_churrasco']?>">
+                <option value="tradicional" >Tradicional</option>
+                <option value="vegetariano">Vegetariano</option>
             </select>
         </label>
 
         <label>Acompanhamento
-            <input type="text" name="acompanhamento" value = "<?php echo $res->acompanhamento?>">
+            <input type="text" name="acompanhamento" value = "<?php echo $res['acompanhamento']?>">
         </label>
 
         <p>Presença confirmada</p>
-        <label><input type="radio" value="1" name="presenca" <?php $res->confirmado ? 'checked' : ''?>> Sim</label>
-        <label><input type="radio" value="0" name="presenca" <?php $res->confirmado ? '' : 'checked'?>> Não</label>
+        <label><input type="radio" value="1" name="presenca" <?php echo $res['confirmado'] ? 'checked' : ''?>> Sim</label>
+        <label><input type="radio" value="0" name="presenca" <?php echo $res['confirmado'] ? '' : 'checked'?>> Não</label>
 
         <p>Pagamento realizado</p>
-        <label><input type="radio" value= "1" name="pagamento" <?php $res->pago ? 'checked' : ''?>> Sim</label>
-        <label><input type="radio" value= "0" name="pagamento" <?php $res->pago ? '' : 'checked'?>> Não</label>
+        <label><input type="radio" value= "1" name="pagamento" <?php echo $res['pago'] ? 'checked' : ''?>> Sim</label>
+        <label><input type="radio" value= "0" name="pagamento" <?php echo $res['pago'] ? '' : 'checked'?>> Não</label>
 
         <button type="submit">ENVIAR</button>
     </form>

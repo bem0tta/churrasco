@@ -1,5 +1,5 @@
 <?php
-    require_once '../includes/validar_login.php';
+    require_once '../includes/verificar_login.php';
     require_once '../config/conexao.php';
 
     $id = $_GET['id'];
@@ -23,10 +23,8 @@
 
     try{
         $con->query($sql);
-        Seaslog::alert('Participante cadastrado!');
         header('location: listar.php');
     } catch(mysqli_sql_exception $e){
-        Seaslog::alert('Não foi possível cadastrar!');
-        header('location: cadastrar.php');
+        header('location: listar.php?res = falha');
     }
 ?>

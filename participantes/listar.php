@@ -1,6 +1,11 @@
 <?php
 require_once '../config/conexao.php';
 require_once '../includes/verificar_login.php';
+
+if(isset($_GET['res']) && $_GET['res'] == 'falha'){
+    echo 'A operação falhou';
+}
+
 $sql = "SELECT id, nome, turma, tipo_churrasco AS tipo, confirmado, pago
         FROM participantes";
 
