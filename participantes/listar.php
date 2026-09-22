@@ -1,31 +1,47 @@
 <?php
 require_once '../config/conexao.php';
 require_once '../includes/verificar_login.php';
-$sql = 'SELECT nome, turma, tipo_churrasco as tipo, confirmado, pago from participantes';
-if (isset($_GET['pesquisa'])) {
-    if (!empty($_GET['pesquisa']["nome"]) || !empty($_GET['pesquisa']["pagemento"]) || !empty($_GET['pesquisa']["presenca"])) {
-        $sql = $sql . " where ";
+$sql = "SELECT nome, turma, tipo_churrasco AS tipo, confirmado, pago
+        FROM participantes";
 
-        if (!empty($_GET['pesquisa']["nome"])) {
-            $sql = $sql . "nome like '%" . $_GET['pesquisa']["nome"] . "%' AND ";
-        }
-        switch ($_GET['pesquisa']["pagamento"]) {
+$condicoes = [];
+
+if (isset($_GET['pesquisa'])) {
+
+    $pesquisa = $_GET['pesquisa'];
+
+    if (!empty($pesquisa['nome'])) {
+        $nome = $pesquisa['nome'];
+        $condicoes[] = "nome LIKE '%$nome%'";
+    }
+
+    if (isset($pesquisa['pagamento'])) {
+        switch ($pesquisa['pagamento']) {
             case 'pagos':
-                $sql = $sql . 'pago = true AND';
+                $condicoes[] = "pago = true";
                 break;
+
             case 'pendentes':
-                $sql = $sql . 'pago = false AND';
-                break;
-        }
-        switch ($_GET['pesquisa']["presenca"]) {
-            case 'confirmados':
-                $sql = $sql . 'confirmado = true';
-                break;
-            case 'naoConfirmados':
-                $sql = $sql . 'confirmado = false';
+                $condicoes[] = "pago = false";
                 break;
         }
     }
+
+    if (isset($pesquisa['presenca'])) {
+        switch ($pesquisa['presenca']) {
+            case 'confirmados':
+                $condicoes[] = "confirmado = true";
+                break;
+
+            case 'naoConfirmados':
+                $condicoes[] = "confirmado = false";
+                break;
+        }
+    }
+}
+
+if (!empty($condicoes)) {
+    $sql .= " WHERE " . implode(" AND ", $condicoes);
 }
 try {
     $res = $con->query($sql);

@@ -1,5 +1,5 @@
 <?php
-    require_once '../includes/validar_login.php';
+    require_once '../includes/verificar_login.php';
     if(!isset($_GET['id'])){
         header('location: index.php');
     }
