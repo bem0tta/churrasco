@@ -2,7 +2,7 @@
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         
     try{
-        $con = new mysqli("localhost", "root", "", "catalogo_series");
+        $con = new mysqli("localhost", "root", "", "churrasco");
         $con -> set_charset("utf8mb4");
         return $con;
     } catch(mysqli_sql_exception $e){
