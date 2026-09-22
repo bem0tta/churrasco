@@ -1,5 +1,5 @@
-CREATE DATABASE churrasco
-CHARACTER SET utf8mb4
+CREATE DATABASE churrasco;
+CHARACTER SET utf8mb4;
 COLLATE utf8mb4_unicode_ci;
 USE churrasco;
 CREATE TABLE usuarios (
