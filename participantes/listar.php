@@ -2,7 +2,7 @@
 require_once '../config/conexao.php';
 require_once '../includes/verificar_login.php';
 
-if(isset($_GET['res']) && $_GET['res'] == 'falha'){
+if (isset($_GET['res']) && $_GET['res'] == 'falha') {
     echo 'A operação falhou';
 }
 
@@ -101,22 +101,23 @@ try {
         </thead>
         <tbody>
             <?php
-            echo "<tr>";
 
             while ($user = $res->fetch_assoc()) {
-                foreach ($user as $chave =>$dadoUser) {
+                echo "<tr>";
+                foreach ($user as $chave => $dadoUser) {
                     if ($chave !== 'id') {
                         echo "<td>$dadoUser</td>";
                     }
                 }
-                echo "<td><a href='editar.php?id=". $user['id'] ."'>Editar</a>";
-                echo "<a href='excluir.php?id=". $user['id'] ."' class='excluir'>Excluir</a></td>";
+                echo "<td><a href='editar.php?id=" . $user['id'] . "'>Editar</a>";
+                echo "<a href='excluir.php?id=" . $user['id'] . "' class='excluir'>Excluir</a></td>";
+                echo "</tr>";
             }
 
-            echo "</tr>";
             ?>
         </tbody>
     </table>
     <script src='../js/confirmarExcluir.js'></script>
 </body>
+
 </html>
