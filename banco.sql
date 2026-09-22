@@ -18,3 +18,7 @@ CREATE TABLE participantes (
     confirmado BOOLEAN NOT NULL DEFAULT FALSE,
     pago BOOLEAN NOT NULL DEFAULT FALSE
 );
+
+use churrasco;
+insert into participantes (nome, turma, telefone, tipo_churrasco, acompanhamento, confirmado, pago) values('bernardo', '2 INFO', '093647862394', 'tradicional', 'arroz', 1, 0);
+insert into usuarios (nome, email, senha) VALUES('bernardo', 'blzmotta@gmail.com', 'b123')
