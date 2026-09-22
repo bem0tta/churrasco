@@ -1,24 +1,24 @@
 <?php
     require_once '../config/conexao.php';
 
-    if(!isset($_GET['email']) || !isset($_GET['senha'])){
+    if(!isset($_POST['email']) || !isset($_POST['senha'])){
         header('location: ../login.php');
     }
 
-    $email = $_GET['email'];
-    $senha = $_GET['senha'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
 
-    $sql = 'SELECT * FROM usuarios';
-    $res = $con->query($sql);
-
-    while($user = res->fetch_assoc()){
-        if($user->email == $email && $user->senha == $senha){
-            session_start();
-            $_SESSION['email'] = $email;
-            $_SESSION['senha'] = $senha;
-            header('location: ../index.php');
-        } else{
-            session_destroy();
-            header('location: ../login.php?res=falha');
+    try{
+        $res = $con->query($sql);
+        if($res->num_rows == 0){
+            throw new mysqli_sql_exception("Não achou");
         }
+        session_start();
+        $_SESSION['email'] = $email;
+        $_SESSION['senha'] = $senha;
+        header('location: ../index.php');
+    } catch (mysqli_sql_exception $e) {
+        session_destroy();
+        header('location: login.php?res=falha');
     }

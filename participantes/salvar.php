@@ -1,6 +1,6 @@
 <?php
-    require_once '../includes/validar_login.php';
-    require_once '../config/conexao.php';
+    require_once 'includes/validar_login.php';
+    require_once 'config/conexao.php';
 
     $nome = $_POST['nome'];
     $turma = $_POST['turma'];

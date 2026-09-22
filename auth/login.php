@@ -1,5 +1,5 @@
 <?php
-    if($_GET['res'] == 'falha'){
+    if(isset($_GET['res']) && $_GET['res'] == 'falha'){
         echo 'Usuário não encontrado';
     }
 ?>
