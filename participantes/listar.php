@@ -82,13 +82,13 @@ $res = $con->query($sql);
                     echo "<td>$dadoUser</td>";
                 }
                 echo "<a href='editar.php'>Editar</a>";
-                echo "<a href='excluir.php'>Excluir</a>";
+                echo "<a href='excluir.php' class='excluir'>Excluir</a>";
             }
 
             echo "</tr>";
             ?>
         </tbody>
     </table>
+    <script src='../js/confirmarExcluir.js'></script>
 </body>
-
 </html>
