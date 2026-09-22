@@ -1,7 +1,7 @@
 <?php
 require_once '../config/conexao.php';
 require_once '../includes/verificar_login.php';
-$sql = "SELECT nome, turma, tipo_churrasco AS tipo, confirmado, pago
+$sql = "SELECT id, nome, turma, tipo_churrasco AS tipo, confirmado, pago
         FROM participantes";
 
 $condicoes = [];

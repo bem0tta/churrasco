@@ -1,9 +1,10 @@
 <?php
     require_once '../includes/verificar_login.php';
+    require_once '../config/conexao.php';
     if(!isset($_GET['id'])){
         header('location: index.php');
     }
-    $sql = 'select * from participantes where id = '.$_GET['id'].';';
+    $sql = "select * from participantes where id = ".$_GET['id'].";";
     $res = $con->query($sql);
 ?>
 
