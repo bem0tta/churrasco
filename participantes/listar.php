@@ -110,7 +110,7 @@ try {
                     }
                 }
                 echo "<td><a href='editar.php?id=" . $user['id'] . "'>Editar</a>";
-                echo "<a data-id='".$user['id']."' class='excluir'>Excluir</a></td>";
+                echo "<span data-id='".$user['id']."' class='excluir'>Excluir</span></td>";
                 echo "</tr>";
             }
 
