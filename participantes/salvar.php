@@ -1,6 +1,6 @@
 <?php
-    require_once 'includes/validar_login.php';
-    require_once 'config/conexao.php';
+    require_once '../includes/verificar_login.php';
+    require_once '../config/conexao.php';
 
     $nome = $_POST['nome'];
     $turma = $_POST['turma'];
@@ -10,16 +10,12 @@
     $presenca = $_POST['presenca'];
     $pagamento = $_POST['pagamento'];
 
-    $sql = 'INSERT INTO participantes VALUES('.
-        $nome.','.$turma.','.$telefone.','.$tipo.','.$acompanhamnento.','.$presenca.','.$pagamento
-        .')';
+    $sql = "INSERT INTO participantes (nome, turma, telefone, tipo_churrasco, acompanhamento, confirmado, pago) VALUES( '$nome', '$turma', '$telefone', '$tipo', '$acompanhamento', $presenca, $pagamento)";
 
     try{
         $con->query($sql);
-        Seaslog::alert('Participante cadastrado!');
         header('location: listar.php');
     } catch(mysqli_sql_exception $e){
-        Seaslog::alert('Não foi possível cadastrar!');
-        header('location: cadastrar.php');
+        header('location: listar.php?res=falha');
     }
 ?>

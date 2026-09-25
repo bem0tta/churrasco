@@ -1,5 +1,5 @@
 <?php
-    require_once '../includes/validar_login.php';
+    require_once '../includes/verificar_login.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +25,8 @@
 
         <label>Tipo de churrasco
             <select name="tipo">
-                <option value="t">Tradicional</option>
-                <option value="v">Vegetariano</option>
+                <option value="tradicional">Tradicional</option>
+                <option value="vegetariano">Vegetariano</option>
             </select>
         </label>
 
