@@ -12,6 +12,7 @@
     <title>Cadastrar</title>
 </head>
 <body>
+    <a href="../index.php" class='acoes' id='voltar'>VOLTAR</a>
     <form action="salvar.php" method="post">
         <label>Nome 
             <input type="text" name="nome" id="nome">

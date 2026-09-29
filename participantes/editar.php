@@ -19,6 +19,7 @@
     <title>Editar</title>
 </head>
 <body>
+    <a href="../index.php" class='acoes' id='voltar'>VOLTAR</a>
     <form action="atualizar.php?id=<?php echo $_GET['id']?>" method="post">
         <label>Nome 
             <input type="text" name="nome" value = "<?php echo $res['nome']?>">

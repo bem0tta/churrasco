@@ -20,12 +20,12 @@ $vegetarianos = (int)$res["total"] - (int)$res["carnivoros"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link rel="stylesheet" href="../style/estilo.css">
+    <link rel="stylesheet" href="style/estilo.css">
 </head>
 
 <body>
     <h1>CHURRASCO DA SEMANA FARROUPILHA</h1>
-    <div style="display: flex; flex-direction: column;">
+    <div class='infos'>
         <span>Total de inscritos: <?php echo $res["total"] ?></span>
         <span>Confirmados: <?php echo $res["confirmados"] ?></span>
         <span>Não confirmados: <?php echo (int) $res["total"] - (int) $res["confirmados"] ?></span>
@@ -35,10 +35,9 @@ $vegetarianos = (int)$res["total"] - (int)$res["carnivoros"];
         <span>Vegetariano: <?php echo (int) $res["total"] - (int) $res["carnivoros"] ?></span>
     </div>
     <div>
-        <a href="participantes/listar.php">Participantes</a>
-        <a href="auth/logout.php">Sair</a>
-        <a href="participantes/cadastrar.php">Cadastrar</a>
+        <a href="participantes/listar.php" class='acoes'>Participantes</a>
+        <a href="auth/logout.php" class='acoes'>Sair</a>
+        <a href="participantes/cadastrar.php" class='acoes'>Cadastrar</a>
     </div>
 </body>
-
 </html>

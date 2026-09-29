@@ -4,7 +4,7 @@ require_once '../includes/verificar_login.php';
 include_once '../includes/cabecalho.php';
 
 if (isset($_GET['res']) && $_GET['res'] == 'falha') {
-    echo 'A operação falhou';
+    echo '<span class="feedback">A operação falhou</span>';
 }
 
 $sql = "SELECT id, nome, turma, tipo_churrasco AS tipo, confirmado, pago
@@ -74,11 +74,14 @@ function verificarSituacao($presenca, $pago){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/estilo.css">
     <title>Listar</title>
 </head>
 
 <body>
-    <form method="get">
+    <a href="../index.php" class='acoes' id='voltar'>VOLTAR</a>
+
+    <form method="get" id='filtro'>
         <label>
             <span>Pesquisar Participantes</span>
             <input type="text" name="pesquisa[nome]">
@@ -99,8 +102,8 @@ function verificarSituacao($presenca, $pago){
                 <option value="naoConfirmados">Não confirmados</option>
             </select>
         </label>
-        <button type="submit">Filtrar</button>
-        <button type="reset">Limpar</button>
+        <button type="submit" class='btn-filtro'>Filtrar</button>
+        <button type="reset" class='btn-filtro'>Limpar</button>
     </form>
     <table>
         <thead>
@@ -129,17 +132,15 @@ function verificarSituacao($presenca, $pago){
                         echo "<td>$dadoUser</td>";
                     }
                 }
-                $situacao = verificarSituacao($user['confirmado'], $user['pago']);
-                echo "<td>$situacao</td>";
-                echo "<td><a href='editar.php?id=" . $user['id'] . "'>Editar</a>";
-                echo "<span data-id='".$user['id']."' class='excluir'>Excluir</span>";
+                echo "<td><a href='editar.php?id=" . $user['id'] . "' class='acoes'>Editar</a>";
+                echo "<span data-id='".$user['id']."' class='excluir acoes'>Excluir</span></td>";
                 if ($user['confirmado']) {
-                    echo "<a href='confirmar.php?id=" . $user['id'] . "&acao=desconfirmar'>Desconfirmar presença</a>";
+                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=desconfirmar' class='acoes'>Desconfirmar presença</a></td>";
                 } else {
-                    echo "<a href='confirmar.php?id=" . $user['id'] . "&acao=confirmar'>Confirmar presença</a>";
+                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=confirmar' class='acoes'>Confirmar presença</a></td>";
                 }
                 if (!$user['pago']) {
-                    echo "<a href='pagar.php?id=" . $user['id'] ."'>Confirmar pagamento</a></td>";
+                    echo "<td><a href='pagar.php?id=" . $user['id'] ."' class='acoes'>Confirmar pagamento</a></td>";
                 }
                 echo "</tr>";
             }

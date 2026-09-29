@@ -12,6 +12,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 form{
@@ -35,4 +36,71 @@ button{
 button:hover{
     opacity: 70%;
     cursor: pointer;
+}
+
+table{
+    border: solid 1px;
+    background-color: beige;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: solid 1px;
+    border-collapse: collapse;
+    padding: 15px;
+}
+
+#filtro{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.btn-filtro{
+    font-size: 16px;
+}
+
+.acoes{
+    background-color: rgb(255, 234, 201);
+    border: solid 2px rgb(255, 222, 181);
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    border-radius: 10%;
+}
+
+.acoes:hover{
+    opacity: 70%;
+    cursor: pointer;
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+    padding: 20px;
+    border-radius: 10%;
+}
+
+.feedback{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 2px green;
+    background-color: rgb(195, 252, 195);
+    border-radius: 10%;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    font-size: 20px;
+}
+
+#voltar{
+    position: absolute;
+    top: 5%;
+    left: 5%;
 }
