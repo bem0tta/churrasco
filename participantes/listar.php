@@ -105,12 +105,27 @@ try {
             while ($user = $res->fetch_assoc()) {
                 echo "<tr>";
                 foreach ($user as $chave => $dadoUser) {
-                    if ($chave !== 'id') {
+                    
+                    if ($chave == 'confirmado') {
+                        echo "<td>" . ($dadoUser ? 'Sim' : 'Não') . "</td>";
+                    }
+                    else if ($chave == 'pago') {
+                        echo "<td>" . ($dadoUser ? 'Sim' : 'Não') . "</td>";
+                    }
+                    else if ($chave !== 'id') {
                         echo "<td>$dadoUser</td>";
                     }
                 }
                 echo "<td><a href='editar.php?id=" . $user['id'] . "'>Editar</a>";
                 echo "<span data-id='".$user['id']."' class='excluir'>Excluir</span></td>";
+                if ($user['confirmado']) {
+                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=desconfirmar'>Desconfirmar presença</a></td>";
+                } else {
+                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=confirmar'>Confirmar presença</a></td>";
+                }
+                if (!$user['pago']) {
+                    echo "<td><a href='pagar.php?id=" . $user['id'] ."'>Confirmar pagamento</a></td>";
+                }
                 echo "</tr>";
             }
 
