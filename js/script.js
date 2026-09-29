@@ -38,14 +38,14 @@ elementos.forEach(element => {
     })
 })
 
-presenca.forEach(radio => {
-    radio.addEventListener('change', function () {
+presenca.forEach(element => {
+    element.addEventListener('change', function () {
         verificaCampos(elementos, presenca, pagamento, btn)
     })
 })
 
-pagamento.forEach(radio => {
-    radio.addEventListener('change', function () {
+pagamento.forEach(element => {
+    element.addEventListener('change', function () {
         verificaCampos(elementos, presenca, pagamento, btn)
     })
 })
