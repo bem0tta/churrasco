@@ -133,22 +133,22 @@ function verificarSituacao($presenca, $pago){
                     }
                 }
                 echo "<td><a href='editar.php?id=" . $user['id'] . "' class='acoes'>Editar</a>";
-                echo "<span data-id='".$user['id']."' class='excluir acoes'>Excluir</span></td>";
+                echo "<span data-id='".$user['id']."' class='excluir acoes'>Excluir</span></td><td>";
                 if ($user['confirmado']) {
-                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=desconfirmar' class='acoes'>Desconfirmar presença</a></td>";
+                    echo "<a href='confirmar.php?id=" . $user['id'] . "&acao=desconfirmar' class='acoes'>Desconfirmar presença</a>";
                 } else {
-                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=confirmar' class='acoes'>Confirmar presença</a></td>";
+                    echo "<a href='confirmar.php?id=" . $user['id'] . "&acao=confirmar' class='acoes'>Confirmar presença</a>";
                 }
                 if (!$user['pago']) {
-                    echo "<td><a href='pagar.php?id=" . $user['id'] ."' class='acoes'>Confirmar pagamento</a></td>";
+                    echo "<a href='pagar.php?id=" . $user['id'] ."' class='acoes'>Confirmar pagamento</a>";
                 }
-                echo "</tr>";
+                echo "</td></tr>";
             }
 
             ?>
         </tbody>
     </table>
-    <a href="cadastrar.php">Cadastrar novo participante</a>
+    <a href="cadastrar.php" class='acoes'>Cadastrar novo participante</a>
     <script src='../js/confirmarExcluir.js'></script>
 </body>
 

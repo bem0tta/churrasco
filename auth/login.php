@@ -1,8 +1,6 @@
 <?php
-include_once '../includes/cabecalho.php';
-
 if (isset($_GET['res']) && $_GET['res'] == 'falha') {
-    echo 'Usuário não encontrado';
+    echo '<span class="feedback">Usuário não encontrado</span>';
 }
 ?>
 <!DOCTYPE html>
