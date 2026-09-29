@@ -10,9 +10,6 @@ try {
 }
 $vegetarianos = (int)$res["total"] - (int)$res["carnivoros"];
 
-var_dump($res["total"]);
-var_dump($res["carnivoros"]);
-var_dump($vegetarianos);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +30,11 @@ var_dump($vegetarianos);
         <span>Pagamentos pendentes: <?php echo (int) $res["total"] - (int) $res["pagamentosFeitos"] ?></span>
         <span>Churrasco tradicional: <?php echo $res["carnivoros"] ?></span>
         <span>Vegetariano: <?php echo (int) $res["total"] - (int) $res["carnivoros"] ?></span>
+    </div>
+    <div>
+        <a href="participantes/listar.php">Participantes</a>
+        <a href="auth/logout.php">Sair</a>
+        <a href="participantes/cadastrar.php">Cadastrar</a>
     </div>
 </body>
 
