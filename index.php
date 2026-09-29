@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/verificar_login.php';
 require_once 'config/conexao.php';
+include_once '../includes/cabecalho.php';
 
 $sql = "SELECT COUNT(*) as total, COALESCE(SUM(tipo_churrasco = 'tradicional'), 0) AS carnivoros, COALESCE(SUM(confirmado), 0) as confirmados, COALESCE(SUM(pago), 0) as pagamentosFeitos FROM participantes";
 try {

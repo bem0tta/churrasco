@@ -1,3 +1,5 @@
-<?php
-    echo '<a href="../auth/logout.php">SAIR</a>';
-?>
+<link rel="stylesheet" href="../style/includes.css">
+<div>
+    <h1>Churrasco</h1>
+    <a href="../auth/logout.php">SAIR</a>
+</div>

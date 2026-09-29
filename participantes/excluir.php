@@ -1,6 +1,7 @@
 <?php
 require_once '../includes/verificar_login.php';
 require_once '../config/conexao.php';
+
 try {
     if (isset($_GET['id']) && !empty($_GET['id'])) {
         $sql = 'delete from participantes where id = '. $_GET['id'];

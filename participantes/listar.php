@@ -1,6 +1,7 @@
 <?php
 require_once '../config/conexao.php';
 require_once '../includes/verificar_login.php';
+include_once '../includes/cabecalho.php';
 
 if (isset($_GET['res']) && $_GET['res'] == 'falha') {
     echo 'A operação falhou';

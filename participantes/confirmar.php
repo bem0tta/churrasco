@@ -1,5 +1,6 @@
 <?php
     require_once '../config/conexao.php';
+
 if (isset($_GET['id']) && isset($_GET['acao'])) {
     $id = $_GET['id'];
     $acao = $_GET['acao'];

@@ -1,5 +1,6 @@
 <?php
     require_once '../includes/verificar_login.php';
+    include_once '../includes/cabecalho.php';
 ?>
 
 <!DOCTYPE html>
