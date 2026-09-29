@@ -2,7 +2,7 @@
     require_once '../config/conexao.php';
 
     if(empty($_POST['email']) || empty($_POST['senha'])){
-        header('location: ../login.php');
+        header('location: login.php?res=falha');
     }
 
     $email = $_POST['email'];

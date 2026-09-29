@@ -10,6 +10,6 @@ try {
         throw new mysqli_sql_exception("Não existe get");
     }
 } catch (mysqli_sql_exception $e) {
-    header('location: listar.php?res = falha');
+    header('location: listar.php?res=falha');
 }
 header('location: listar.php');

@@ -17,4 +17,6 @@ if (isset($_GET['id']) && isset($_GET['acao'])) {
             header("Location: listar.php?res=falha");
         }
     }
+}else {
+    header("Location: listar.php?res=falha");
 }

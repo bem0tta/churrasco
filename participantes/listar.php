@@ -146,6 +146,7 @@ function verificarSituacao($presenca, $pago){
             ?>
         </tbody>
     </table>
+    <a href="cadastrar.php">Cadastrar novo participante</a>
     <script src='../js/confirmarExcluir.js'></script>
 </body>
 

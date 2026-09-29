@@ -10,4 +10,6 @@ if (isset($_GET['id'])) {
     } else {
         header("Location: listar.php?res=falha");
     }
+}else {
+    header("Location: listar.php?res=falha");
 }
