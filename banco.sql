@@ -21,4 +21,4 @@ CREATE TABLE participantes (
 
 use churrasco;
 insert into participantes (nome, turma, telefone, tipo_churrasco, acompanhamento, confirmado, pago) values('bernardo', '2 INFO', '093647862394', 'tradicional', 'arroz', 1, 0);
-insert into usuarios (nome, email, senha) VALUES('bernardo', 'blzmotta@gmail.com', 'b123')
+insert into usuarios (nome, email, senha) VALUES('bernardo', 'blzmotta@gmail.com', '$2y$10$Y2WzFdUVAe083U6ZpYgTs.3ArdjdaKFtzQ.RSNuk6f.sr.HFXC63u')

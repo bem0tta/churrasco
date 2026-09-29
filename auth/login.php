@@ -12,8 +12,8 @@
 </head>
 <body>
     <form action="autenticar.php" method="post">
-        <label>Digite seu e-mail <input type="text" name='email' required></label>
-        <label>Digite sua senha <input type="text" name = 'senha' required></label>
+        <label>Digite seu e-mail <input type="email" name='email' required></label>
+        <label>Digite sua senha <input type="password" name='senha' required></label>
         <button type="submit">ENVIAR</button>
     </form>
 </body>

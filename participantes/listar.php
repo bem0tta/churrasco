@@ -53,7 +53,18 @@ try {
 } catch (mysqli_sql_exception $e) {
     echo $e;
 }
-
+function verificarSituacao($presenca, $pago){
+    $situacao = '';
+    if ($presenca && $pago) {
+        $situacao = 'Inscrição regularizada';
+    }
+    else if ($presenca && !$pago) {
+        $situacao = 'Pagamento pendente';
+    } else {
+        $situacao = 'Aguardando confirmação';
+    } 
+    return $situacao;
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,6 +108,7 @@ try {
             <th>Tipo</th>
             <th>Presença</th>
             <th>Pagamento</th>
+            <th>Situação</th>
             <th>Ações</th>
         </thead>
         <tbody>
@@ -116,15 +128,17 @@ try {
                         echo "<td>$dadoUser</td>";
                     }
                 }
+                $situacao = verificarSituacao($user['confirmado'], $user['pago']);
+                echo "<td>$situacao</td>";
                 echo "<td><a href='editar.php?id=" . $user['id'] . "'>Editar</a>";
-                echo "<span data-id='".$user['id']."' class='excluir'>Excluir</span></td>";
+                echo "<span data-id='".$user['id']."' class='excluir'>Excluir</span>";
                 if ($user['confirmado']) {
-                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=desconfirmar'>Desconfirmar presença</a></td>";
+                    echo "<a href='confirmar.php?id=" . $user['id'] . "&acao=desconfirmar'>Desconfirmar presença</a>";
                 } else {
-                    echo "<td><a href='confirmar.php?id=" . $user['id'] . "&acao=confirmar'>Confirmar presença</a></td>";
+                    echo "<a href='confirmar.php?id=" . $user['id'] . "&acao=confirmar'>Confirmar presença</a>";
                 }
                 if (!$user['pago']) {
-                    echo "<td><a href='pagar.php?id=" . $user['id'] ."'>Confirmar pagamento</a></td>";
+                    echo "<a href='pagar.php?id=" . $user['id'] ."'>Confirmar pagamento</a></td>";
                 }
                 echo "</tr>";
             }
