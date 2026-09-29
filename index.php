@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/verificar_login.php';
 require_once 'config/conexao.php';
+
 $sql = "SELECT COUNT(*) as total, COALESCE(SUM(tipo_churrasco = 'tradicional'), 0) AS carnivoros, COALESCE(SUM(confirmado), 0) as confirmados, COALESCE(SUM(pago), 0) as pagamentosFeitos FROM participantes";
 try {
     $res = $con->query($sql);
@@ -18,6 +19,7 @@ $vegetarianos = (int)$res["total"] - (int)$res["carnivoros"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
+    <link rel="stylesheet" href="../style/estilo.css">
 </head>
 
 <body>
