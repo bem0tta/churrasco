@@ -1,6 +1,5 @@
 <?php
     session_start();
     if(!isset($_SESSION['email'])){
-        header('location: /churrasco/auth/login.php');
+        header('location: /auth/login.php');
     }
-?>

@@ -1,24 +1,36 @@
 <?php
     require_once '../config/conexao.php';
 
-    if(!isset($_POST['email']) || !isset($_POST['senha'])){
-        header('location: ../login.php');
+    if(empty($_POST['email']) || empty($_POST['senha'])){
+        header('location: login.php?res=falha');
     }
 
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
 
-    try{
-        $res = $con->query($sql);
-        if($res->num_rows == 0){
-            throw new mysqli_sql_exception("Não achou");
+    try {
+        $stmt = $con->prepare('SELECT id, senha FROM usuarios WHERE email = ?');
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $stmt->bind_result($usuarioId, $senhaArmazenada);
+
+        if (!$stmt->fetch()) {
+            header('Location: login.php?res=falha');
+            exit;
         }
+
+        $senhaValida = password_verify($senha, $senhaArmazenada);
+
+        if (!$senhaValida) {
+            header('Location: login.php?res=falha');
+            exit;
+        }
+
         session_start();
         $_SESSION['email'] = $email;
-        $_SESSION['senha'] = $senha;
-        header('location: ../index.php');
+        header('Location: ../index.php');
+        exit;
     } catch (mysqli_sql_exception $e) {
-        session_destroy();
-        header('location: login.php?res=falha');
+        header('Location: login.php?res=falha');
+        exit;
     }

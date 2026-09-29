@@ -53,7 +53,18 @@ try {
 } catch (mysqli_sql_exception $e) {
     echo $e;
 }
-
+function verificarSituacao($presenca, $pago){
+    $situacao = '';
+    if ($presenca && $pago) {
+        $situacao = 'Inscrição regularizada';
+    }
+    else if ($presenca && !$pago) {
+        $situacao = 'Pagamento pendente';
+    } else {
+        $situacao = 'Aguardando confirmação';
+    } 
+    return $situacao;
+}
 ?>
 
 <!DOCTYPE html>
@@ -100,6 +111,7 @@ try {
             <th>Tipo</th>
             <th>Presença</th>
             <th>Pagamento</th>
+            <th>Situação</th>
             <th>Ações</th>
         </thead>
         <tbody>
@@ -135,6 +147,7 @@ try {
             ?>
         </tbody>
     </table>
+    <a href="cadastrar.php">Cadastrar novo participante</a>
     <script src='../js/confirmarExcluir.js'></script>
 </body>
 
